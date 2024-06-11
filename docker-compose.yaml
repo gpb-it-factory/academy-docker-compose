@@ -1,0 +1,28 @@
+version: '3.8'
+name: academy
+services:
+  quotes:
+    image: docker-username/quotes
+    container_name: quotes
+    command: sleep 1000
+    build:
+      context: /path/to/your/quotes/root/project/
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    networks:
+      - default
+  hero:
+    image: docker-username/hero
+    container_name: hero
+    build:
+      context: /path/to/your/hero/root/project/
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    networks:
+      - default
+
+networks:
+  myNetwork:
+    driver: "bridge"
